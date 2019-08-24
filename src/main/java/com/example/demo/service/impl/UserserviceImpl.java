@@ -1,31 +1,26 @@
-/**
- * 
- */
-package com.example.demo.impl;
+package com.example.demo.service.impl;
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.example.demo.UserRepo;
 import com.example.demo.UI.shared.dto.Userdto;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.service.UserService;
-
 @Service
-public class userServiceImpl implements UserService {
-
+public class UserserviceImpl implements UserService {
 	@Autowired
-	UserRepo userrepo;
+	com.example.demo.UserRepo UserRepo;
 	@Override
 	public Userdto createUser(Userdto user) {
-		UserEntity userentity = new UserEntity();
-		BeanUtils.copyProperties(user, userentity);
-		UserEntity storeduserdetails = userrepo.save(userentity);
+		UserEntity userEntity = new UserEntity();
+		BeanUtils.copyProperties(user, userEntity);
+		
+		UserEntity storeduserdetails = UserRepo.save(userEntity);
 		Userdto returnValue = new Userdto();
 		BeanUtils.copyProperties(storeduserdetails, returnValue);
 
-		return returnValue;
+		return returnValue; 
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.example.demo.UI;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import com.example.demo.service.UserService;
 @RestController //BindRequests
 @RequestMapping("students") //Handle requests - http://localhost:8080/users
 public class usercontroller {
-	
+	@Autowired
 	UserService userservice;
 	
 	@GetMapping //bind the get request

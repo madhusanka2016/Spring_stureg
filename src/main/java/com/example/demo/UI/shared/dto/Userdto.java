@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Userdto implements Serializable{
 	private static final long serialVersionUID = 1L;
+	private long id;
 	private String firstname;
 	private String lastname;
 	private String mail;
@@ -94,6 +95,12 @@ public class Userdto implements Serializable{
 	}
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

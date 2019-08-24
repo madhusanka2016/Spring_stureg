@@ -1,6 +1,8 @@
 package com.example.demo.UI.resp.model;
 
 public class UserdetailsRespModel {
+	private long id;
+
 	private String firstname;
 	private String lastname;
 	private String addno;
@@ -35,6 +37,12 @@ public class UserdetailsRespModel {
 	}
 	public void setAddgrade(String addgrade) {
 		this.addgrade = addgrade;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	
