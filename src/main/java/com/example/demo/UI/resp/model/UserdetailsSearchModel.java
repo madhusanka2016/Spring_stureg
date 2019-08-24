@@ -1,17 +1,6 @@
-package com.example.demo.entity;
+package com.example.demo.UI.resp.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-@Entity(name="Students")
-public class UserEntity implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
+public class UserdetailsSearchModel {
 	private long id;
 	private String firstname;
 	private String lastname;
@@ -110,12 +99,4 @@ public class UserEntity implements Serializable {
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	public static UserEntity findById() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

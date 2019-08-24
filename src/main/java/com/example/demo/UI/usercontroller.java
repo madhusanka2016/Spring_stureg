@@ -4,6 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.UI.req.model.UserdetailsReqModel;
+import com.example.demo.UI.resp.model.DeleteResp;
 import com.example.demo.UI.resp.model.UserdetailsRespModel;
+import com.example.demo.UI.resp.model.UserdetailsSearchModel;
 import com.example.demo.UI.shared.dto.Userdto;
 import com.example.demo.service.UserService;
 
@@ -21,10 +24,13 @@ public class usercontroller {
 	@Autowired
 	UserService userservice;
 	
-	@GetMapping //bind the get request
-	public String getuser( )
+	@GetMapping(path="/{name}") //bind the get request
+	public UserdetailsSearchModel getuser(@PathVariable String name)
 	{
-		return "get user called";
+		UserdetailsSearchModel returnValue = new UserdetailsSearchModel();
+		Userdto userDto = userservice.getUserbyName(name);
+		BeanUtils.copyProperties(userDto, returnValue);
+		return returnValue;
 	}
 	
 	@PostMapping //post
@@ -42,9 +48,10 @@ public class usercontroller {
 		return "Update User Called";
 	}
 	
-	@DeleteMapping
-	public String deleteUser() {
-		return "Delete user called";
+	@DeleteMapping(path="/{id}")
+	public DeleteResp deleteUser() {
+		DeleteResp returnValue = new DeleteResp();
+		return returnValue;
 	}
 
 }

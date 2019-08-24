@@ -5,6 +5,9 @@ import com.example.demo.UI.shared.dto.Userdto;
 public interface UserService {
 	
 	Userdto createUser (Userdto user);
+	
+	Userdto getUserbyName(String name);
+	
 
 	
 }
