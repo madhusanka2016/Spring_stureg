@@ -15,7 +15,7 @@ import com.example.demo.UI.shared.dto.Userdto;
 import com.example.demo.service.UserService;
 
 @RestController //BindRequests
-@RequestMapping("users") //Handle requests - http://localhost:8080/users
+@RequestMapping("students") //Handle requests - http://localhost:8080/users
 public class usercontroller {
 	
 	UserService userservice;
