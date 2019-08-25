@@ -60,9 +60,11 @@ public class usercontroller {
 		BeanUtils.copyProperties(updatedUser, returnValue);
 		return returnValue;	}
 	
-	@DeleteMapping(path="/{id}")
-	public DeleteResp deleteUser() {
+	@DeleteMapping(path="/{name}")
+	public DeleteResp deleteUser(@PathVariable String name) {
 		DeleteResp returnValue = new DeleteResp();
+	
+		userservice.deleteUser(name);
 		return returnValue;
 	}
 

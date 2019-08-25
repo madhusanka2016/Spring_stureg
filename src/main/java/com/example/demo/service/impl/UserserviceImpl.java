@@ -52,5 +52,10 @@ public class UserserviceImpl implements UserService {
 		BeanUtils.copyProperties(updateddata, returnValue);
 		return returnValue;
 	}
+	@Override
+	public void deleteUser(String name) {
+		UserEntity userEntity = UserRepo.findAllByFirstname(name);
+		UserRepo.delete(userEntity);
+	}
 
 }
