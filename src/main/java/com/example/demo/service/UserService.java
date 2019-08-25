@@ -7,7 +7,11 @@ public interface UserService {
 	Userdto createUser (Userdto user);
 	
 	Userdto getUserbyName(String name);
-	
+
+	Userdto getallUserbyName(String name);
+
+	Userdto updateUser(String id, Userdto user);
+
 
 	
 }

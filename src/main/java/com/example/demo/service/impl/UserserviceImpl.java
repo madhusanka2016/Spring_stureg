@@ -1,7 +1,5 @@
 package com.example.demo.service.impl;
 
-import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +31,26 @@ public class UserserviceImpl implements UserService {
 
 
 		return returnValue; 
+	}
+	public Userdto getallUserbyName(String name) {
+		Userdto returnValue = new Userdto();
+		UserEntity userEntity = UserRepo.findAllByFirstname(name);
+
+		BeanUtils.copyProperties(userEntity, returnValue);
+
+
+		return returnValue; 
+	}
+	@Override
+	public Userdto updateUser(String id, Userdto user) {
+		Userdto returnValue = new Userdto();
+		UserEntity userEntity = UserRepo.findAllByFirstname(id);
+		
+		userEntity.setAddclass(user.getAddclass()); // updated the Class
+		userEntity.setAddgrade(user.getAddgrade()); // updated the Grade
+		UserEntity updateddata =UserRepo.save(userEntity);
+		BeanUtils.copyProperties(updateddata, returnValue);
+		return returnValue;
 	}
 
 }

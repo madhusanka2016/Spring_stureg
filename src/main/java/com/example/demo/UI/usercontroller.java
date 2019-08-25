@@ -32,6 +32,14 @@ public class usercontroller {
 		BeanUtils.copyProperties(userDto, returnValue);
 		return returnValue;
 	}
+	@GetMapping(path="/all/{name}") //bind the get request
+	public UserdetailsSearchModel getuserall(@PathVariable String name)
+	{
+		UserdetailsSearchModel returnValue = new UserdetailsSearchModel();
+		Userdto userDto = userservice.getallUserbyName(name);
+		BeanUtils.copyProperties(userDto, returnValue);
+		return returnValue;
+	}
 	
 	@PostMapping //post
 	public UserdetailsRespModel createUser(@RequestBody UserdetailsReqModel userDetails) {
@@ -43,10 +51,14 @@ public class usercontroller {
 		return returnValue;
 	}
 	
-	@PutMapping
-	public String updateUser() {
-		return "Update User Called";
-	}
+	@PutMapping(path="/{id}")
+	public UserdetailsRespModel updateUser(@PathVariable String id, @RequestBody UserdetailsReqModel userDetails) {
+		UserdetailsRespModel returnValue = new UserdetailsRespModel();
+		Userdto userDto = new Userdto();
+		BeanUtils.copyProperties(userDetails, userDto);
+		Userdto updatedUser = userservice.updateUser(id, userDto);
+		BeanUtils.copyProperties(updatedUser, returnValue);
+		return returnValue;	}
 	
 	@DeleteMapping(path="/{id}")
 	public DeleteResp deleteUser() {
